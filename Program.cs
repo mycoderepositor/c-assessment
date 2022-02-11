@@ -81,9 +81,13 @@ namespace ProTrans.Optimiz.Mvc4KendoWeb.Areas.LogOn.Controllers
 
             Console.WriteLine("Id" + " \t " + "Foodname" + " \t " + "ManufacturingDate" + " \t " + "ExpiredDate" + " \t " + "IsColdItem");
             Console.WriteLine("--------------------------------------------------------------------------------");
-            foreach (var show in manufacturedDetails)
+            foreach (var detail in manufacturedDetails)
             {
-                Console.WriteLine(show.Id + " \t " + show.FoodName + "\t  " + show.ManufacturingDate.ToShortDateString() + " \t\t " + show.ExpiredDate.ToShortDateString() + " \t \t" + show.IsColdItem + "\n");
+                Console.WriteLine(detail.Id + " \t " +
+                    detail.FoodName + "\t  " +
+                    detail.ManufacturingDate.ToShortDateString() + " \t\t " +
+                    detail.ExpiredDate.ToShortDateString() + " \t \t" + 
+                    detail.IsColdItem + "\n");
             }
             Console.WriteLine("--------------------------------------------------------------------------------");
             Console.ReadLine();
@@ -93,11 +97,11 @@ namespace ProTrans.Optimiz.Mvc4KendoWeb.Areas.LogOn.Controllers
 
 
             //Task 4. Initialize the values for the "Vitamins" property. This should be a collection of strings, using an inbuilt method.
-            manufacturedDetail1.Vitamins = new List<string> { "Vitamin A", "Vitamin B", "Vitamin C" };
-            manufacturedDetail2.Vitamins = new List<string> { "Vitamin B", "Vitamin C", "Vitamin D" };
-            manufacturedDetail3.Vitamins = new List<string> { "Vitamin C", "Vitamin D", "Vitamin A" };
-            manufacturedDetail4.Vitamins = new List<string> { "Vitamin D", "Vitamin A", "Vitamin B" };
-            manufacturedDetail5.Vitamins = new List<string> { "Vitamin E", "Vitamin A", "Vitamin B" };
+            manufacturedDetail1.Vitamins = new List<string> { "Vitamin A", "Vitamin B" };
+            manufacturedDetail2.Vitamins = new List<string> { "Vitamin B", "Vitamin C" };
+            manufacturedDetail3.Vitamins = new List<string> { "Vitamin C", "Vitamin D" };
+            manufacturedDetail4.Vitamins = new List<string> { "Vitamin D", "Vitamin A" };
+            manufacturedDetail5.Vitamins = new List<string> { "Vitamin E", "Vitamin A" };
 
 
 
@@ -106,7 +110,8 @@ namespace ProTrans.Optimiz.Mvc4KendoWeb.Areas.LogOn.Controllers
             //Task 5. Print the Name of the FoodName and Vitamins in console as comma separated values.
             foreach (var details in manufacturedDetails)
             {
-                Console.WriteLine(details.FoodName + " " + string.Join(",", details.Vitamins));
+                Console.WriteLine(details.FoodName + " \t " + 
+                    string.Join(",", details.Vitamins));
             }
             Console.ReadLine();
 
@@ -141,23 +146,23 @@ namespace ProTrans.Optimiz.Mvc4KendoWeb.Areas.LogOn.Controllers
             //Task 10. Display all data like (Id,FoodName,ManufacturingDate,ExpiredDate,IsColdItem,Vitamins,ManufacturedCompany,Ingredients) in RECORDWISE TABLE SEPARATED VALUES and Lists are in comma separated value.
             Console.WriteLine("ID" + " \t " + "FOODNAME" + " \t " + "MANUFACTURINGDATE" + " \t " + "EXPIREDDATE" + " \t " + "ISCOLDITEM" + " \t" + "VITAMINS" + "\t " + "MANUFACTURED CITY" + "\t" + "MANUFACTURED COMPANY" + "\t " + "INGREDIENTS");
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------------------------------------");
-            foreach (var showallDetails in newDetails)
+            foreach (var allDetails in newDetails)
             {
-                Console.WriteLine(showallDetails.Id + " \t " +
-                    showallDetails.FoodName + " \t " +
-                    showallDetails.ManufacturingDate.ToShortDateString() + " \t \t" +
-                    showallDetails.ExpiredDate.ToShortDateString() + "\t " +
-                    showallDetails.IsColdItem + "\t \t " + String.Join(",", showallDetails.Vitamins) + " \t" +
-                    showallDetails.ManufacturedCity + "\t \t" +
-                    showallDetails.ManufacturedCompany + " \t\t" +
-                    String.Join(",", showallDetails.Ingredients));
+                Console.WriteLine(allDetails.Id + " \t " +
+                    allDetails.FoodName + " \t " +
+                    allDetails.ManufacturingDate.ToShortDateString() + " \t \t" +
+                    allDetails.ExpiredDate.ToShortDateString() + "\t " +
+                    allDetails.IsColdItem + "\t \t " + String.Join(",", allDetails.Vitamins) + " \t" +
+                    allDetails.ManufacturedCity + "\t \t" +
+                    allDetails.ManufacturedCompany + " \t\t" +
+                    String.Join(",", allDetails.Ingredients));
             }
             Console.ReadLine();
 
 
 
 
-            ManufacturedDetails.AddVitamins(manufacturedDetail1, "Vitamin E");
+            ManufacturedDetails.AddVitamins(manufacturedDetail1, "Vitamin B");
 
             var vitaminDetails = manufacturedDetail1.GetVitamins();
         }
